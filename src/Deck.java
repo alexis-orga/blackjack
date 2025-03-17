@@ -8,7 +8,7 @@ public class Deck {
     public Deck() {
         cards = new ArrayList<>();
         for (int suits = 1; suits < 4; suits++){
-            for (int value = 0; value <= 13; value++) {
+            for (int value = 0; value <= 11; value++) {
                 cards.add(value);
             }
         }
