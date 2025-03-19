@@ -63,7 +63,6 @@ public class Main {
                     dealerHand.addCard(deck.drawCard());
                     System.out.println("Dealer hand: " + dealerHand + " Total: " + dealerHand.getTotal());
                 }
-
                 if (dealerHand.getTotal() > 21 || playerHand.getTotal() > dealerHand.getTotal()) {
                     System.out.println("You won");
                     account += bet * 2;
