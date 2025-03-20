@@ -9,9 +9,9 @@ public class GameLogic {
     }
 
     public void startNewGame() {
-        Deck deck = new Deck();
-        Hand playerHand = new Hand();
-        Hand dealerHand = new Hand();
+        deck = new Deck();
+        playerHand = new Hand();
+        dealerHand = new Hand();
 
         playerHand.addCard(deck.drawCard());
         dealerHand.addCard(deck.drawCard());
