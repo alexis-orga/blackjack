@@ -53,6 +53,11 @@ public class Window extends Frame {
     }
 
     private void placeBet(int amount) {
+        if (game.getDealerHand() == null) {
+            System.out.println("GameLogic not initialized! Restarting...");
+            game.startNewGame();
+        }
+
         game.placeBet(amount);
         updateUI();
     }
@@ -72,6 +77,11 @@ public class Window extends Frame {
     }
 
     private void updateUI() {
+        if (game.getDealerHand() == null || game.getPlayerHand() == null) {
+            System.out.println("Error: Hands not initialized! Skipping update.");
+            return;
+        }
+
         lblAccount.setText("Account: $" + game.getAccount());
         lblBet.setText("Bet: $" + game.getBet());
         lblDealerHand.setText("Dealer hand" + formatHand(game.getDealerHand().getCards()));

@@ -12,12 +12,13 @@ public class GameLogic {
         Deck deck = new Deck();
         Hand playerHand = new Hand();
         Hand dealerHand = new Hand();
-        bet = 0;
 
         playerHand.addCard(deck.drawCard());
         dealerHand.addCard(deck.drawCard());
         playerHand.addCard(deck.drawCard());
         dealerHand.addCard(deck.drawCard());
+
+        System.out.println("New game started. Dealer hand: " + dealerHand.getCards());
     }
 
     public void placeBet(int amount) {
@@ -28,6 +29,10 @@ public class GameLogic {
     }
 
     public void playerHit() {
+        if (deck == null) {
+            System.out.println("ERROR, Deck is null");
+            startNewGame();
+        }
         playerHand.addCard(deck.drawCard());
     }
 
