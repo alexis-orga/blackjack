@@ -84,8 +84,8 @@ public class Window extends Frame {
 
         lblAccount.setText("Account: $" + game.getAccount());
         lblBet.setText("Bet: $" + game.getBet());
-        lblDealerHand.setText("Dealer hand" + formatHand(game.getDealerHand().getCards()));
-        lblPlayerHand.setText("Your hand" + formatHand(game.getPlayerHand().getCards()));
+        lblDealerHand.setText("Dealer hand" + formatHand(game.getDealerHand().getCards()) + " " + game.getDealerHand().getTotal());
+        lblPlayerHand.setText("Your hand" + formatHand(game.getPlayerHand().getCards()) + " " + game.getPlayerHand().getTotal());
     }
 
     private String formatHand(List<Integer> cards) {

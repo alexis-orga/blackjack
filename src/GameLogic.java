@@ -12,6 +12,7 @@ public class GameLogic {
         deck = new Deck();
         playerHand = new Hand();
         dealerHand = new Hand();
+        bet = 0;
 
         playerHand.addCard(deck.drawCard());
         dealerHand.addCard(deck.drawCard());
