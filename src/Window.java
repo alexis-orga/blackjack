@@ -4,7 +4,7 @@ import java.util.List;
 public class Window extends Frame {
     private GameLogic game;
     private Label lblAccount, lblBet, lblPlayerHand, lblDealerHand, lblStatus;
-    private Button btnHit, btnStand, btnNewGame, btnBet10;
+    private Button btnHit, btnStand, btnNewGame, btnBet5, btnBet10, btnBet20, btnBet50;
 
     public Window() {
         game = new GameLogic();
@@ -19,7 +19,10 @@ public class Window extends Frame {
         lblDealerHand = new Label("Dealer hand");
         lblStatus = new Label("");
 
+        btnBet5 = new Button("Bet 5$");
         btnBet10 = new Button("Bet 10$");
+        btnBet20 = new Button("Bet 20$");
+        btnBet50 = new Button("Bet 50$");
         btnHit = new Button("Hit");
         btnStand = new Button("Stand");
         btnNewGame = new Button("New Game");
@@ -32,13 +35,19 @@ public class Window extends Frame {
 
         Panel btnPanel = new Panel();
         btnPanel.setLayout(new FlowLayout());
+        btnPanel.add(btnBet5);
         btnPanel.add(btnBet10);
+        btnPanel.add(btnBet20);
+        btnPanel.add(btnBet50);
         btnPanel.add(btnHit);
         btnPanel.add(btnStand);
         btnPanel.add(btnNewGame);
         add(btnPanel);
 
+        btnBet5.addActionListener(e -> placeBet(5));
         btnBet10.addActionListener(e -> placeBet(10));
+        btnBet20.addActionListener(e -> placeBet(20));
+        btnBet50.addActionListener(e -> placeBet(50));
         btnHit.addActionListener(e -> hitCard());
         btnStand.addActionListener(e -> dealerTurn());
         btnNewGame.addActionListener(e -> startNewGame());
