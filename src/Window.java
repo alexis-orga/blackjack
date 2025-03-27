@@ -1,10 +1,16 @@
 import java.awt.*;
 import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 public class Window extends Frame {
     private GameLogic game;
-    private Label lblAccount, lblBet, lblPlayerHand, lblDealerHand, lblStatus;
-    private Button btnHit, btnStand, btnNewGame, btnBet5, btnBet10, btnBet20, btnBet50;
+    private JLabel lblAccount, lblBet, lblPlayerHand, lblDealerHand, lblStatus;
+    private JButton btnHit, btnStand, btnNewGame, btnBet5, btnBet10, btnBet20, btnBet50;
 
     public Window() {
         game = new GameLogic();
@@ -13,19 +19,26 @@ public class Window extends Frame {
         setSize(400, 400);
         setLayout(new GridLayout(6, 1));
 
-        lblAccount = new Label("Account: $");
-        lblBet = new Label("Bet: $");
-        lblPlayerHand = new Label("Your hand");
-        lblDealerHand = new Label("Dealer hand");
-        lblStatus = new Label("");
+        lblAccount = new JLabel("Account: $", SwingConstants.CENTER);
+        lblBet = new JLabel("Bet: $", SwingConstants.CENTER);
+        lblPlayerHand = new JLabel("Your hand", SwingConstants.CENTER);
+        lblDealerHand = new JLabel("Dealer hand", SwingConstants.CENTER);
+        lblStatus = new JLabel("", SwingConstants.CENTER);
 
-        btnBet5 = new Button("Bet 5$");
-        btnBet10 = new Button("Bet 10$");
-        btnBet20 = new Button("Bet 20$");
-        btnBet50 = new Button("Bet 50$");
-        btnHit = new Button("Hit");
-        btnStand = new Button("Stand");
-        btnNewGame = new Button("New Game");
+        btnBet5 = new JButton("Bet 5$");
+        btnBet10 = new JButton("Bet 10$");
+        btnBet20 = new JButton("Bet 20$");
+        btnBet50 = new JButton("Bet 50$");
+        btnHit = new JButton("Hit");
+        btnStand = new JButton("Stand");
+        btnNewGame = new JButton("New Game");
+
+        lblAccount.setFont(new Font("ARIAL", Font.BOLD, 16));
+        lblBet.setFont(new Font("ARIAL", Font.BOLD, 16));
+        lblPlayerHand.setFont(new Font("Arial", Font.BOLD, 16));
+        lblDealerHand.setFont(new Font("Arial", Font.BOLD, 16));
+        lblStatus.setFont(new Font("Arial", Font.BOLD, 18));
+        lblStatus.setForeground(Color.RED);
 
         add(lblAccount);
         add(lblBet);
@@ -33,8 +46,11 @@ public class Window extends Frame {
         add(lblPlayerHand);
         add(lblStatus);
 
-        Panel btnPanel = new Panel();
-        btnPanel.setLayout(new FlowLayout());
+
+        JPanel btnPanel = new JPanel();
+        btnPanel.setLayout(new GridLayout(2, 4, 10, 10));
+        btnPanel.setBackground(Color.RED);
+
         btnPanel.add(btnBet5);
         btnPanel.add(btnBet10);
         btnPanel.add(btnBet20);
