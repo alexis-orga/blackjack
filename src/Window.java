@@ -1,6 +1,8 @@
 import java.awt.*;
+import java.io.File;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,6 +13,9 @@ public class Window extends Frame {
     private GameLogic game;
     private JLabel lblAccount, lblBet, lblPlayerHand, lblDealerHand, lblStatus;
     private JButton btnHit, btnStand, btnNewGame, btnBet5, btnBet10, btnBet20, btnBet50;
+    private JPanel panelPlayerHand, panelDealerHand;
+
+
 
     public Window() {
         game = new GameLogic();
@@ -33,12 +38,22 @@ public class Window extends Frame {
         btnStand = new JButton("Stand");
         btnNewGame = new JButton("New Game");
 
-        lblAccount.setFont(new Font("ARIAL", Font.BOLD, 16));
-        lblBet.setFont(new Font("ARIAL", Font.BOLD, 16));
+        lblAccount.setFont(new Font("ARIAL", Font.ITALIC, 16));
+        lblBet.setFont(new Font("ARIAL", Font.ITALIC, 16));
         lblPlayerHand.setFont(new Font("Arial", Font.BOLD, 16));
         lblDealerHand.setFont(new Font("Arial", Font.BOLD, 16));
         lblStatus.setFont(new Font("Arial", Font.BOLD, 18));
-        lblStatus.setForeground(Color.RED);
+        setBackground(Color.GREEN);
+        panelDealerHand = new JPanel();
+        panelDealerHand.setLayout(new FlowLayout());
+        panelDealerHand.setBackground(Color.GREEN);
+
+        panelPlayerHand = new JPanel();
+        panelPlayerHand.setLayout(new FlowLayout());
+        panelPlayerHand.setBackground(Color.GREEN);
+
+        add(panelDealerHand);
+        add(panelPlayerHand);
 
         add(lblAccount);
         add(lblBet);
@@ -49,7 +64,7 @@ public class Window extends Frame {
 
         JPanel btnPanel = new JPanel();
         btnPanel.setLayout(new GridLayout(2, 4, 10, 10));
-        btnPanel.setBackground(Color.RED);
+        btnPanel.setBackground(Color.GREEN);
 
         btnPanel.add(btnBet5);
         btnPanel.add(btnBet10);
@@ -109,11 +124,25 @@ public class Window extends Frame {
 
         lblAccount.setText("Account: $" + game.getAccount());
         lblBet.setText("Bet: $" + game.getBet());
-        lblDealerHand.setText("Dealer hand" + formatHand(game.getDealerHand().getCards()) + " " + game.getDealerHand().getTotal());
-        lblPlayerHand.setText("Your hand" + formatHand(game.getPlayerHand().getCards()) + " " + game.getPlayerHand().getTotal());
+
+        panelDealerHand.removeAll();
+        panelPlayerHand.removeAll();
+
+        for (Integer card : game.getDealerHand().getCards()) {
+            panelDealerHand.add(new JLabel(loadCardImage(card)));
+        }
+        for (Integer card : game.getPlayerHand().getCards()) {
+            panelPlayerHand.add(new JLabel(loadCardImage(card)));
+        }
+
+        panelDealerHand.revalidate();
+        panelDealerHand.repaint();
+        panelPlayerHand.revalidate();
+        panelPlayerHand.repaint();
     }
 
-    private String formatHand(List<Integer> cards) {
-        return cards.toString();
+    private ImageIcon loadCardImage(int cards) {
+        String imagePath = new File("assets/" + cards + ".png").getAbsolutePath();
+        return new ImageIcon(imagePath);
     }
 }
