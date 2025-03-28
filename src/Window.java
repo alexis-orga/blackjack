@@ -141,8 +141,8 @@ public class Window extends Frame {
         panelPlayerHand.repaint();
     }
 
-    private ImageIcon loadCardImage(int cards) {
-        String imagePath = new File("assets/" + cards + ".png").getAbsolutePath();
+    private ImageIcon loadCardImage(int value) {
+        String imagePath = "assets/" + value + ".png";
         return new ImageIcon(imagePath);
     }
 }
