@@ -18,7 +18,7 @@ Needed
 - A compatible IDE
 
 Steps 
-- clone this repo : 
+- clone this repo : https://github.com/alexis-orga/blackjack
 - run Main.java to open a new window
 
 How to play 
