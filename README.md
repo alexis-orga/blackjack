@@ -1,4 +1,4 @@
-Blackjack - Jeu en Java
+Blackjack - Java game
 
 Description
 
