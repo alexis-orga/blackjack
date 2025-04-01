@@ -129,6 +129,14 @@ public class Window extends Frame {
         panelPlayerHand.removeAll();
 
         for (Integer card : game.getDealerHand().getCards()) {
+            JLabel label = new JLabel(loadCardImage(card));
+            if (label.getIcon() == null) {
+                System.out.println("Error while loading card: " + card);
+            }
+            panelDealerHand.add(label);
+        }
+
+        for (Integer card : game.getDealerHand().getCards()) {
             panelDealerHand.add(new JLabel(loadCardImage(card)));
         }
         for (Integer card : game.getPlayerHand().getCards()) {
@@ -142,7 +150,14 @@ public class Window extends Frame {
     }
 
     private ImageIcon loadCardImage(int value) {
-        String imagePath = "assets/" + value + ".png";
-        return new ImageIcon(imagePath);
+        String imagePath = "/assets/" + value + ".png";  // Pas de "src" ici !
+        java.net.URL imgURL = getClass().getResource(imagePath);
+
+        if (imgURL == null) {
+            System.out.println("File not found " + imagePath);
+            return null;
+
+        }
+        return new ImageIcon(imgURL);
     }
-}
+}    
