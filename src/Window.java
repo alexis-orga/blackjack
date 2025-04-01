@@ -1,10 +1,7 @@
 import java.awt.*;
-import java.io.File;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -129,14 +126,6 @@ public class Window extends Frame {
         panelPlayerHand.removeAll();
 
         for (Integer card : game.getDealerHand().getCards()) {
-            JLabel label = new JLabel(loadCardImage(card));
-            if (label.getIcon() == null) {
-                System.out.println("Error while loading card: " + card);
-            }
-            panelDealerHand.add(label);
-        }
-
-        for (Integer card : game.getDealerHand().getCards()) {
             panelDealerHand.add(new JLabel(loadCardImage(card)));
         }
         for (Integer card : game.getPlayerHand().getCards()) {
@@ -150,7 +139,7 @@ public class Window extends Frame {
     }
 
     private ImageIcon loadCardImage(int value) {
-        String imagePath = "/assets/" + value + ".png";  // Pas de "src" ici !
+        String imagePath = "/assets/" + value + ".png";
         java.net.URL imgURL = getClass().getResource(imagePath);
 
         if (imgURL == null) {
