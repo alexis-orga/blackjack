@@ -40,4 +40,4 @@ Author
 
 License
 
-This project is licensed under MIT License. You are free to use and modify it.
+You are free to use and modify it.
